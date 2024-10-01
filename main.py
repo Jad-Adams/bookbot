@@ -13,7 +13,7 @@ def main():
     
     # print a report of how often each character occurs
     clean_report = print_report(num_characters)
-    # print(clean_report)
+    print(f"Should be empty {clean_report}")
 
 
 # Get the book    
@@ -32,7 +32,7 @@ def to_lowercase(text):
     lowered_string = text.lower()
     return lowered_string
 
-# Calcualtes num of times a letter occurs in a text
+# Calcualtes num of times a letter occurs in a text and stores data in a dictionary
 def char_count(x):
     dict_characters = {}
     
@@ -45,10 +45,21 @@ def char_count(x):
 
 def print_report(dict):
     character_report_list = []
+    cleanup = {}
     
-    character_report_list.append(dict)
-
-    print("character_report_list")
-
+    # removes all weird characters
+    for x, y in dict.items():
+        if x.isalpha():
+            cleanup[x] = y
+            
+    # populates a list with the characters
+    for key, value in cleanup.items():
+        character_report_list.append({key:value})
+        
+    character_report_list.sort(reverse=False, key=None)
+        
+    print(character_report_list)
+    
+    pass
     
 main()

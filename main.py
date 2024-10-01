@@ -1,10 +1,20 @@
 def main():
     book_path = "books/frankenstein.txt"
     book_text = get_book_text(book_path)
+    
+    # calculate the number of words
     num_words = word_count(book_text)
-    print(f"this book contains {num_words} words")
+    # print(f"this book contains {num_words} words")
+    
+    # convert text to lowercase and count characters
     lower_case_text = to_lowercase(book_text)
-    char_count(lower_case_text)
+    num_characters = char_count(lower_case_text)
+    # print(num_characters)
+    
+    # print a report of how often each character occurs
+    clean_report = print_report(num_characters)
+    # print(clean_report)
+
 
 # Get the book    
 def get_book_text(path):
@@ -31,7 +41,14 @@ def char_count(x):
             dict_characters[character] += 1
         else:
             dict_characters[character] = 1
-    
-    print(dict_characters)
+    return dict_characters
 
+def print_report(dict):
+    character_report_list = []
+    
+    character_report_list.append(dict)
+
+    print("character_report_list")
+
+    
 main()

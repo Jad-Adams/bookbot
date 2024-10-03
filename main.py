@@ -4,7 +4,7 @@ def main():
     
     # calculate the number of words
     num_words = word_count(book_text)
-    # print(f"this book contains {num_words} words")
+    print(f"this document contains {num_words} words")
     
     # convert text to lowercase and count characters
     lower_case_text = to_lowercase(book_text)
@@ -44,21 +44,25 @@ def char_count(x):
 
 def print_report(dict):
     character_report_list = []
-    cleanup = {}
+    cleaned_list = {}
     
     # removes all weird characters
     for x, y in dict.items():
         if x.isalpha():
-            cleanup[x] = y
+            cleaned_list[x] = y
             
     # populates a list with the characters
-    for key, value in cleanup.items():
+    for key, value in cleaned_list.items():
         character_report_list.append({"character": key, "count": value})
         
     character_report_list.sort(key=lambda x: x["count"], reverse=True)
-         
+
+    # prints a report of the characters and their count     
     for item in character_report_list:
-        print(f"The {item} character was found {item} times")
+        print(f"The {item['character']} character was found {item['count']} times")
+    
+    print("-- End report --")
+
     return
     
 main()

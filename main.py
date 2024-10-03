@@ -13,7 +13,6 @@ def main():
     
     # print a report of how often each character occurs
     clean_report = print_report(num_characters)
-    print(f"Should be empty {clean_report}")
 
 
 # Get the book    
@@ -54,12 +53,12 @@ def print_report(dict):
             
     # populates a list with the characters
     for key, value in cleanup.items():
-        character_report_list.append({key:value})
+        character_report_list.append({"character": key, "count": value})
         
-    character_report_list.sort(reverse=False, key=None)
-        
-    print(character_report_list)
-    
-    pass
+    character_report_list.sort(key=lambda x: x["count"], reverse=True)
+         
+    for item in character_report_list:
+        print(f"The {item} character was found {item} times")
+    return
     
 main()
